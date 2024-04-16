@@ -30,4 +30,4 @@ file to match the corresponding internal IP of your server in order to properly 
 
 
 Note: 
-The database implemented in phase 2 of the project has NOT been modified for phase 3 (this phase). The project runs using the same existing database structure/data.
+The database implemented in phase 2 of the project has NOT been modified for phase 3 (this phase). The project runs using the same existing database structure/data (NOT included).
