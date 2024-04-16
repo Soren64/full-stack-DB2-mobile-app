@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,8 @@ public class Login extends AppCompatActivity {
     String name, email, password;
     Button buttonSubmit;
     SharedPreferences sharedPreferences;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,7 @@ public class Login extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
                                     String status = jsonObject.getString("status");
-                                    if (status.equals("success")){
+                                    if (status.equals("true")){
                                         name = jsonObject.getString("name");
                                         email = jsonObject.getString("email");
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -75,7 +78,6 @@ public class Login extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
                                         finish();
-
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

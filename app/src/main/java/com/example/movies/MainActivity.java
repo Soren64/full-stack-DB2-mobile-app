@@ -45,7 +45,21 @@ public class MainActivity extends AppCompatActivity {
         textViewName.setText(sharedPreferences.getString("name",""));
         textViewEmail.setText(sharedPreferences.getString("email",""));
 
+
         buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("logged", "false");
+                editor.putString("name", "");
+                editor.putString("email", "");
+                editor.apply();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        /*buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -84,6 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 };
                 queue.add(stringRequest);
             }
-        });
+        });*/
     }
 }
