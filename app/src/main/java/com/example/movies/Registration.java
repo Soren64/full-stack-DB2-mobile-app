@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ public class Registration extends AppCompatActivity {
         textViewLoginNow = findViewById(R.id.loginNow);
         buttonSubmit = findViewById(R.id.buttonLogin);
 
+
         textViewLoginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +55,9 @@ public class Registration extends AppCompatActivity {
                 name = etName.getText().toString();
                 email = etEmail.getText().toString();
                 password = etPassword.getText().toString();
+                Log.d("name",name);
+                Log.d("email", email);
+                Log.d("password",password);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 String url = getString(R.string.url) + "register.php";
@@ -77,8 +82,8 @@ public class Registration extends AppCompatActivity {
                     protected Map<String, String> getParams(){
                         Map<String, String> paramV = new HashMap<>();
                         paramV.put("name", name);
-                        paramV.put("name", email);
-                        paramV.put("name", password);
+                        paramV.put("email", email);
+                        paramV.put("password", password);
                         return paramV;
                     }
                 };
