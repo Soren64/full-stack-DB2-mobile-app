@@ -28,7 +28,7 @@ set up that contains the necessary queries. The server can be ran and configured
 file to match the corresponding internal IP of your server in order to properly connect to your database. It will also need to contain the pathway to the respective php code,
 which should be located in your "htdocs" folder for XAMPP.
 
-Example: http://123.45.67.8:X/pathway/to/phpcode/
+Example: "http://123.45.67.8:X/pathway/to/phpcode/"
 
 (Tip: Run the 'ipconfig' command in your local terminal to find the IP)
 
