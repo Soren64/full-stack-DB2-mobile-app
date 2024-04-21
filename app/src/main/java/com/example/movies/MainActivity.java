@@ -26,7 +26,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textViewName, textViewEmail;
+    TextView textViewName, textViewEmail, textViewCourseRecord;
     SharedPreferences sharedPreferences;
     Button buttonLogout;
     @Override
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         textViewName = findViewById(R.id.name);
         textViewEmail = findViewById(R.id.email);
         buttonLogout = findViewById(R.id.logout);
+        textViewCourseRecord = findViewById(R.id.courseRecord);
         sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
         if (sharedPreferences.getString("logged", "false").equals("false")){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -55,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString("email", "");
                 editor.apply();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        textViewCourseRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EnterID.class);
                 startActivity(intent);
                 finish();
             }
