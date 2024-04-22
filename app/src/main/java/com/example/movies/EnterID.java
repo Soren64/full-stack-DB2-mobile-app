@@ -29,7 +29,7 @@ import java.util.Map;
 public class EnterID extends AppCompatActivity {
 
     EditText etID;
-    String id, curCourses, pastCourses;
+    String enteredID, id, curCourses, pastCourses, name;
     Button buttonSubmit;
     SharedPreferences sharedPreferences;
 
@@ -46,7 +46,7 @@ public class EnterID extends AppCompatActivity {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                id = etID.getText().toString();
+                enteredID = etID.getText().toString();
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 String url = getString(R.string.url) + "courseRecord.php";
@@ -58,7 +58,8 @@ public class EnterID extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
                                     String status = jsonObject.getString("status");
-                                    if (status.equals("true")){
+                                    name = jsonObject.getString("name");
+                                    if (status.equals("true") && sharedPreferences.getString("name","null").equals(name)){
                                         curCourses = jsonObject.getString("cur-courses");
                                         pastCourses = jsonObject.getString("past-courses");
                                         id = jsonObject.getString("id");
@@ -85,7 +86,7 @@ public class EnterID extends AppCompatActivity {
 
                     protected Map<String, String> getParams(){
                         Map<String, String> paramV = new HashMap<>();
-                        paramV.put("id", id);
+                        paramV.put("id", enteredID);
                         return paramV;
                     }
                 };
