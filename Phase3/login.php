@@ -4,20 +4,20 @@
 require 'config.php';
 
 
-if (!empty($_POST['email']) && !empty($_POST['password'])){
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $result = array();
 
-    if ($connection){
+    if ($connection) {
         //$sql = "SELECT * FROM account WHERE email = '".$email."'";
         //$res = mysqli_query($connection, $sql);
-        $getEmail = mysqli_query($connection, "SELECT * FROM account WHERE email = '".$email."'");
+        $getEmail = mysqli_query($connection, "SELECT * FROM account WHERE email = '" . $email . "'");
         $checkTypeRow = mysqli_fetch_assoc($getEmail);
 
-        if (mysqli_num_rows($getEmail) != 0){
-            if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'student'){
-                $sQuery = mysqli_query($connection, "SELECT * FROM student WHERE email = '".$email."'");
+        if (mysqli_num_rows($getEmail) != 0) {
+            if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'student') {
+                $sQuery = mysqli_query($connection, "SELECT * FROM student WHERE email = '" . $email . "'");
                 $sRow = mysqli_fetch_assoc($sQuery);
 
                 
@@ -31,8 +31,8 @@ if (!empty($_POST['email']) && !empty($_POST['password'])){
 
                 echo json_encode($response);
             }
-            else if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'instructor'){
-                $iQuery = mysqli_query($connection, "SELECT * FROM instructor WHERE email = '".$email."'");
+            else if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'instructor') {
+                $iQuery = mysqli_query($connection, "SELECT * FROM instructor WHERE email = '" . $email . "'");
                 $iRow = mysqli_fetch_assoc($iQuery);
 
                 $response['email'] = $checkTypeRow['email'];
