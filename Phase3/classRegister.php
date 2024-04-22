@@ -18,10 +18,10 @@ if (!empty($_POST['id']) && !empty($_POST['courseId']) && !empty($_POST['section
 
             //Fetch current semester and year
             $sql = "SELECT MAX(year) AS max_year, semester
-            FROM section
-            GROUP BY year
-            ORDER BY year DESC, FIELD(semester, 'Spring', 'Summer', 'Fall', 'Winter')
-            LIMIT 1";
+                FROM section
+                GROUP BY year
+                ORDER BY year DESC, FIELD(semester, 'Spring', 'Summer', 'Fall', 'Winter')
+                LIMIT 1";
             $result = mysqli_query($connection, $sql);
             $currRow = $result->fetch_assoc();
             $curSem = $currRow["semester"];
