@@ -23,6 +23,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 $response['email'] = $checkTypeRow['email'];
                 $response['password'] = $checkTypeRow['password'];
                 $response['name'] = $sRow['name'];
+                $response['type'] = "student";
                 $response['status'] = "true";
 
                 $_SESSION["email"] = $response['email'];
@@ -37,6 +38,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 $response['email'] = $checkTypeRow['email'];
                 $response['password'] = $checkTypeRow['password'];
                 $response['name'] = $iRow['instructor_name'];
+                $response['type'] = "instructor";
                 $response['status'] = "true";
 
                 $_SESSION["email"] = $response['email'];
