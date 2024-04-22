@@ -7,11 +7,20 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password
     $email = $_POST['email'];
     $password = $_POST['password'];
     if ($connection) {
+        // Insertion into account table
         $sql = "INSERT INTO account VALUES('$email','$password','student')";
         if (mysqli_query($connection, $sql)) {
-            $sqlStudent = "INSERT INTO student VALUES(99999, '$name', '$email', 'Miner School of Computer & Information Sciences')";
+            // New student's ID will be 1 + the highest ID already in the table.
+            $sqlID = "SELECT MAX(student_id) AS max_id FROM student";
+            $result = mysqli_query($connection, $sqlID);
+            $idRow = $result->fetch_assoc();
+            $newID = $idRow["max_id"] + 1;
+            // Insertion into student table
+            $sqlStudent = "INSERT INTO student VALUES($newID, '$name', '$email', 'Miner School of Computer & Information Sciences')";
             if (mysqli_query($connection, $sqlStudent)) {
-                $sqlUndergrad = "INSERT INTO undergraduate VALUES(99999, 0, 'Freshman')";
+                // We are assuming a newly registered student is a freshman with no course credits
+                // Insertion into undergraduate table
+                $sqlUndergrad = "INSERT INTO undergraduate VALUES($newID, 0, 'Freshman')";
                 if (mysqli_query($connection, $sqlUndergrad)) {
                     echo "success";
                 }
