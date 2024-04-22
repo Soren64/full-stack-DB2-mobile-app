@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
 
     TextView textViewRegisterNow;
     EditText etEmail, etPassword;
-    String name, email, password;
+    String name, email, password, type;
     Button buttonSubmit;
     SharedPreferences sharedPreferences;
 
@@ -70,13 +70,23 @@ public class Login extends AppCompatActivity {
                                     if (status.equals("true")){
                                         name = jsonObject.getString("name");
                                         email = jsonObject.getString("email");
+                                        type = jsonObject.getString("type");
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("logged", "true");
                                         editor.putString("name", name);
                                         editor.putString("email", email);
+                                        editor.putString("type", type);
                                         editor.apply();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
+                                        if (type.equals("student")) {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if (type.equals("instructor")) {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivityInstructor.class);
+                                            startActivity(intent);
+                                        }
+                                        //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        //startActivity(intent);
                                         finish();
                                     }
                                 } catch (JSONException e) {

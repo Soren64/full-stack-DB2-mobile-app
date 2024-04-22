@@ -1,51 +1,36 @@
 package com.example.movies;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivityInstructor extends AppCompatActivity {
 
     TextView textViewName, textViewEmail, textViewCourseRecord;
     SharedPreferences sharedPreferences;
-    Button buttonLogout, registerButton;
+    Button buttonLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
-
+        /*
         if (sharedPreferences.getString("type", "student").equals("student")) {
             setContentView(R.layout.activity_main);
         }
         else if (sharedPreferences.getString("type", "student").equals("instructor")) {
             setContentView(R.layout.activity_main_instructor);
         }
-
-        //setContentView(R.layout.activity_main);
+        */
+        setContentView(R.layout.activity_main_instructor);
         textViewName = findViewById(R.id.name);
         textViewEmail = findViewById(R.id.email);
         buttonLogout = findViewById(R.id.logout);
-        registerButton = findViewById(R.id.registerButton);
+        //registerButton = findViewById(R.id.registerButton);
         textViewCourseRecord = findViewById(R.id.courseRecord);
         //sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
         if (sharedPreferences.getString("logged", "false").equals("false")){
@@ -70,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        /*registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ClassRegister.class);
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
 
         textViewCourseRecord.setOnClickListener(new View.OnClickListener() {
