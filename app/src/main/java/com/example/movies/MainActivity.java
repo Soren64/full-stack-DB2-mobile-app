@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textViewName, textViewEmail, textViewCourseRecord;
     SharedPreferences sharedPreferences;
-    Button buttonLogout;
+    Button buttonLogout, registerButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         textViewName = findViewById(R.id.name);
         textViewEmail = findViewById(R.id.email);
         buttonLogout = findViewById(R.id.logout);
+        registerButton = findViewById(R.id.registerButton);
         textViewCourseRecord = findViewById(R.id.courseRecord);
         sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
         if (sharedPreferences.getString("logged", "false").equals("false")){
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClassRegister.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         textViewCourseRecord.setOnClickListener(new View.OnClickListener() {
             @Override

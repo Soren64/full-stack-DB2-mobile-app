@@ -8,6 +8,7 @@
     android:gravity="center"
     android:background="#F6F6F6"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         android:background="@color/white"
         android:text="Name"
         android:textSize="20sp" />
+
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
@@ -30,31 +32,13 @@
         android:background="@color/white"
         android:text="Email"
         android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register for Classes"
-        android:layout_marginTop="16dp"/>
-
+    
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"/>
 
-
-    <TextView
-        android:id="@+id/courseRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:padding="20dp"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:text="Click here to view course history" />
 
 
 
