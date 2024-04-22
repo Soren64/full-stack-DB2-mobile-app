@@ -12,14 +12,13 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     if ($connection) {
         //$sql = "SELECT * FROM account WHERE email = '".$email."'";
         //$res = mysqli_query($connection, $sql);
-        $getEmail = mysqli_query($connection, "SELECT * FROM account WHERE email = '" . $email . "'");
+        $getEmail = mysqli_query($connection, "SELECT * FROM account WHERE email = '$email'");
         $checkTypeRow = mysqli_fetch_assoc($getEmail);
 
         if (mysqli_num_rows($getEmail) != 0) {
             if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'student') {
-                $sQuery = mysqli_query($connection, "SELECT * FROM student WHERE email = '" . $email . "'");
+                $sQuery = mysqli_query($connection, "SELECT * FROM student WHERE email = '$email'");
                 $sRow = mysqli_fetch_assoc($sQuery);
-
                 
                 $response['email'] = $checkTypeRow['email'];
                 $response['password'] = $checkTypeRow['password'];
@@ -32,7 +31,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 echo json_encode($response);
             }
             else if ($email == $checkTypeRow['email'] && $password == $checkTypeRow['password'] && $checkTypeRow['type'] == 'instructor') {
-                $iQuery = mysqli_query($connection, "SELECT * FROM instructor WHERE email = '" . $email . "'");
+                $iQuery = mysqli_query($connection, "SELECT * FROM instructor WHERE email = '$email'");
                 $iRow = mysqli_fetch_assoc($iQuery);
 
                 $response['email'] = $checkTypeRow['email'];
@@ -41,7 +40,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 $response['status'] = "true";
 
                 $_SESSION["email"] = $response['email'];
-                $_SESSION["id"] = $sRow['instructor_id'];
+                $_SESSION["id"] = $iRow['instructor_id'];
 
                 echo json_encode($response);
             }
