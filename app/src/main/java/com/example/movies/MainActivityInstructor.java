@@ -60,7 +60,7 @@ public class MainActivityInstructor extends AppCompatActivity {
         textViewCourseRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EnterID.class);
+                Intent intent = new Intent(getApplicationContext(), EnterInstructorID.class);
                 startActivity(intent);
                 finish();
             }

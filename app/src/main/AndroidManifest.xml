@@ -14,7 +14,13 @@
             android:name=".CourseRecord"
             android:exported="false" />
         <activity
+            android:name=".InstructorRecord"
+            android:exported="false" />
+        <activity
             android:name=".EnterID"
+            android:exported="false" />
+        <activity
+            android:name=".EnterInstructorID"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
