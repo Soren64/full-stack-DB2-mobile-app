@@ -16,6 +16,11 @@ if (!empty($_POST['id'])) {
         $curSem = $currRow["semester"];
         $curYear = $currRow["max_year"];
 
+        // Get student name
+        $getName = mysqli_query($connection, "SELECT * FROM student WHERE student_id = '$id'");
+        $nRow = mysqli_fetch_assoc($getName);
+        $name = $nRow["name"];
+
         //get current courses
         //$getCurCourses = mysqli_query($connection, "SELECT * FROM take WHERE student_id = '" . $id . "' AND semester = '" . $curSem . "' AND year = '" . $curYear . "'");
         $getCurCourses = mysqli_query($connection,
@@ -51,6 +56,7 @@ if (!empty($_POST['id'])) {
 
         $response['cur-courses'] = $curCoursesStr;
         $response['past-courses'] = $pastCoursesStr;
+        $response['name'] = $name;
         $response['id'] = $id;
         $response['status'] = "true";
 
