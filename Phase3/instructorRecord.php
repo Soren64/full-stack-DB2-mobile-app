@@ -21,36 +21,52 @@ if (!empty($_POST['id'])) {
         $nRow = mysqli_fetch_assoc($getName);
         $name = $nRow["instructor_name"];
 
-        // Get current courses
+        // Get current courses and the names of attending students
         $getCurCourses = mysqli_query($connection,
-            "SELECT * FROM section
-            WHERE instructor_id = '$id'
-            AND semester = '$curSem'
-            AND year = '$curYear'"
+            "SELECT take.course_id AS course,
+                take.section_id AS section,
+                student.name AS name
+            FROM take
+            INNER JOIN student ON take.student_id = student.student_id
+            INNER JOIN section ON take.course_id = section.course_id
+                AND take.section_id = section.section_id
+            WHERE take.semester = '$curSem'
+            AND take.year = $curYear
+            AND section.instructor_id = $id"
         );
         $curCoursesArr = array();
 
-        // Get past courses
-        $getPastCourses = mysqli_query($connection,
-            "SELECT * FROM section
-            WHERE instructor_id = '$id'
-            AND semester != '$curSem'
-            AND year <= '$curYear'"
+        // Get past courses and their attending student names and grades
+        $getPastCourses = mysqli_query($connection, 
+            "SELECT take.course_id AS course,
+                take.section_id AS section,
+                student.name AS name,
+                take.grade AS grade
+            FROM take
+            INNER JOIN student ON take.student_id = student.student_id
+            INNER JOIN section ON take.course_id = section.course_id
+                AND take.section_id = section.section_id
+            WHERE take.semester != '$curSem'
+            AND take.year <= $curYear
+            AND section.instructor_id = $id"
         );
         $pastCoursesArr = array();
 
         // Populate current courses array
-        while ($rslt = mysqli_fetch_array($getCurCourses)){
-            array_push($curCoursesArr, $rslt["course_id"]);
+        while ($rslt = mysqli_fetch_array($getCurCourses, MYSQLI_ASSOC)) {
+            $rsltRow = implode(" ", $rslt);
+            array_push($curCoursesArr, $rsltRow);
         }
+
         // Populate past courses array
-        while ($rslt = mysqli_fetch_array($getPastCourses)){
-            array_push($pastCoursesArr, $rslt["course_id"]);
+        while ($rslt = mysqli_fetch_array($getPastCourses, MYSQLI_ASSOC)) {
+            $rsltRow = implode(" ", $rslt);
+            array_push($pastCoursesArr, $rsltRow);
         }
 
         // Convert arrays to strings
-        $curCoursesStr = implode(" ", $curCoursesArr);
-        $pastCoursesStr = implode(" ", $pastCoursesArr);
+        $curCoursesStr = implode(", ", $curCoursesArr);
+        $pastCoursesStr = implode(", ", $pastCoursesArr);
 
         $response['cur-courses'] = $curCoursesStr;
         $response['past-courses'] = $pastCoursesStr;
