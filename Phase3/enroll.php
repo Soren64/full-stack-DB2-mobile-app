@@ -28,7 +28,7 @@ if (!empty($_POST['studentId']) && !empty($_POST['courseId']) && !empty($_POST['
         $sectionResult = $connection->query($sectionQuery);
 
         if ($sectionResult->num_rows > 0) {
-            // Section ID is valid for the current semester, check for available space (<15 students)
+            // Section ID is valid for the current semester, check for available space (< 15 students)
             $rosterQuery = "SELECT COUNT(*) AS roster_size FROM take WHERE section_id = '$sectionId'";
             $rosterResult = mysqli_query($connection, $rosterQuery);
             $rosterRow = mysqli_fetch_assoc($rosterResult);
