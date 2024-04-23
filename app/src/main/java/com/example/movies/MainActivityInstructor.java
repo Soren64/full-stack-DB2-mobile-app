@@ -17,22 +17,14 @@ public class MainActivityInstructor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
-        /*
-        if (sharedPreferences.getString("type", "student").equals("student")) {
-            setContentView(R.layout.activity_main);
-        }
-        else if (sharedPreferences.getString("type", "student").equals("instructor")) {
-            setContentView(R.layout.activity_main_instructor);
-        }
-        */
+        //sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
         setContentView(R.layout.activity_main_instructor);
         textViewName = findViewById(R.id.name);
         textViewEmail = findViewById(R.id.email);
         buttonLogout = findViewById(R.id.logout);
         //registerButton = findViewById(R.id.registerButton);
         textViewCourseRecord = findViewById(R.id.courseRecord);
-        //sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("Phase3", MODE_PRIVATE);
         if (sharedPreferences.getString("logged", "false").equals("false")){
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
@@ -73,45 +65,5 @@ public class MainActivityInstructor extends AppCompatActivity {
                 finish();
             }
         });
-        /*buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = getString(R.string.url) + "logout.php";
-
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-
-                                if (response.equals("success")) {
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("logged", "false");
-                                    editor.putString("name", "");
-                                    editor.putString("email", "");
-                                    editor.apply();
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }){
-                    protected Map<String, String> getParams(){
-                        Map<String, String> paramV = new HashMap<>();
-                        paramV.put("email", sharedPreferences.getString("email",""));
-                        return paramV;
-                    }
-                };
-                queue.add(stringRequest);
-            }
-        });*/
     }
 }

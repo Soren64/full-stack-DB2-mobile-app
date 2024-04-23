@@ -58,11 +58,13 @@ public class EnterID extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
                                     String status = jsonObject.getString("status");
-                                    name = jsonObject.getString("name");
-                                    if (status.equals("true") && sharedPreferences.getString("name","null").equals(name)){
+                                    //name = jsonObject.getString("name");
+                                    id = jsonObject.getString("id");
+                                    //if (status.equals("true") && sharedPreferences.getString("name","null").equals(name)) {
+                                    if (status.equals("true") && enteredID.equals(id)) {
                                         curCourses = jsonObject.getString("cur-courses");
                                         pastCourses = jsonObject.getString("past-courses");
-                                        id = jsonObject.getString("id");
+                                        //id = jsonObject.getString("id");
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("logged", "true");
                                         editor.putString("curCourses", curCourses.toString());
