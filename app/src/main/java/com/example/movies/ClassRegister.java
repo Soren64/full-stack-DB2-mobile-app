@@ -102,8 +102,7 @@ public class ClassRegister extends AppCompatActivity {
             }
         });
 
-        // Assume courseId, sectionId, and studentId are obtained from user input
-        // Make sure to replace "YOUR_PHP_SCRIPT_URL" with the actual URL of your PHP script
+    
         String url = getString(R.string.url) + "classRegister.php";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
