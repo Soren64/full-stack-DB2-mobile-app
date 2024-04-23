@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Enter Student ID"
+        android:text="Enter Your ID"
         android:textStyle="bold"
         android:textSize="22sp"/>
 
@@ -19,7 +19,7 @@
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="Student ID"
+        android:hint="Your ID"
         android:inputType="text" />
 
     <Button

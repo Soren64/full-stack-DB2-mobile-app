@@ -34,7 +34,7 @@
         android:layout_marginBottom="50dp"
         android:background="@color/white"
         android:text="Current Courses"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
         android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:text="Past Courses"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/returnMain"
@@ -67,4 +67,6 @@
         android:textSize="17sp"
         android:textStyle="bold"
         android:text="Click here to return" />
+
+
 </LinearLayout>
