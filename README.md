@@ -10,6 +10,8 @@ This project is the third phase of a larger database design and implementation e
 
 This app is a partial implementation focusing on mobile access to the database.
 
+See the [Phase 2 project here](https://github.com/Soren64/fullstack-php-web-app) for the web-based database implementation.
+
 ---
 
 ## How to Run the Project  
@@ -42,3 +44,6 @@ Run the app on an Android emulator or physical device connected to the same netw
 ## Important Notes  
 - The app relies on the database created in Phase 2. No new tables or data schema changes are introduced in this phase.  
 - The PHP backend must be accessible at the configured URL for the app to function properly.
+
+## License
+This project was developed for educational purposes and is not licensed for production use.
