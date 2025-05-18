@@ -1,38 +1,44 @@
-Authors:
-Nick Matsuda
-Lucca Nelson
-Jack Fallon
+# DB2 Android App Project
 
+## Authors  
+Nick Matsuda, Lucca Nelson, Jack Fallon
 
+---
 
-About the Project:
+## About the Project  
+This project is the third phase of a larger database design and implementation effort. It provides a simplified Android application version of the previously developed web-based database system (Phase 2). The system models a simplified Student Information System (SIS) that allows students and faculty to manage academic information (e.g., checking grades, signing up for classes).
 
-This code is the 3rd part of a larger project in designing and implementiting a database.
+This app is a partial implementation focusing on mobile access to the database.
 
-The code provided is for a simple application that serves as a modified implmentation of a web-based database (phase 2),
-which follows a simplified version of the actual SIS system; used as a way for students and faculty to manage their academics. 
-(Ex. Check grades, sign up for classes, etc.)
+---
 
-The application is a partial implementation of web-based design.
+## How to Run the Project  
 
+### Prerequisites  
+- Android Studio installed  
+- Apache and MySQL server running (XAMPP recommended)  
+- The Phase 3 PHP backend code placed in the `htdocs/Phase3` folder of your XAMPP installation  
+- Existing database from Phase 2 (no schema changes needed)
 
+### Setup Steps  
+1. **Import the Project**  
+   Download or clone the project folder (keep the file structure intact) and open it in Android Studio.  
+   Let Gradle sync and configure (may take several minutes).  
 
-How to run the project:
+2. **Configure the Backend URL**  
+   Open `app/src/main/res/values/strings.xml` and update the `url` value to match your local server’s IP and the Phase3 folder path.  
+   Example: http://192.168.x.x:80/Phase3/
 
-This project uses the Android Studio software to emulate the application on an actual android mobile device. 
-By downloading the entire code (keeping the same file structure) and importing the project to AndroidStudio, 
-the project can built and run. The project will need some time to initially configure the gradle (which can take several minutes).
+   *(Tip: Use the `ipconfig` command on Windows or `ifconfig` on macOS/Linux to find your local IP address.)*  
 
-Since the project relies on queries on a database in order for the application to work properly, you will need to make sure you have an Apache server set up that contains the necessary queries. The server can be ran and configured using XAMPP (run Apache & MySql modules).
-You will absolutely need to modify the "url" value in the "strings.xml" file (contained in: \app\src\main\res\values) to match the corresponding internal IP of your server in order to properly connect to your database. It will also need to include the pathway to the respective php code, which is contained in the folder named "Phase3" included in this download, and must be moved to your "htdocs" folder for XAMPP before the app can be run. 
+3. **Start Your Server**  
+Run Apache and MySQL modules in XAMPP or your preferred server environment.
 
-Example: "http://123.45.67.8:X/Phase3/"
+4. **Launch the App**  
+Run the app on an Android emulator or physical device connected to the same network as your server.
 
-(Tip: Run the 'ipconfig' command in your local terminal to find the IP)
+---
 
-The application will not work correctly if the connection is not configured properly.
-
-
-
-Note: 
-The database implemented in phase 2 of the project has NOT been modified for phase 3 (this phase). The project runs using the same existing database structure/data, no new create/insert statements.
+## Important Notes  
+- The app relies on the database created in Phase 2. No new tables or data schema changes are introduced in this phase.  
+- The PHP backend must be accessible at the configured URL for the app to function properly.
